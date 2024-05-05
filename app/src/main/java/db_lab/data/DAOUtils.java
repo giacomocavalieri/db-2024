@@ -11,8 +11,8 @@ public class DAOUtils {
     //
     public static Connection localMySQLConnection(String database, String username, String password) {
         try {
-            var host = "localhost"
-            var port = "3306"
+            var host = "localhost";
+            var port = "3306";
             var connectionString = "jdbc:mysql://" + host + ":" + port + "/" + database;
             return DriverManager.getConnection(connectionString, username, password);
         } catch (Exception e) {
