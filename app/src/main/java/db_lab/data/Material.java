@@ -55,9 +55,9 @@ public final class Material {
                 while (resultSet.next()) {
                     var code = resultSet.getInt("m.codMateriale");
                     var description = resultSet.getString("m.descrizione");
-                    var composition = resultSet.getFloat("c.percentuale");
+                    var percent = resultSet.getFloat("c.percentuale");
                     var material = new Material(code, description);
-                    materials.put(material, composition);
+                    materials.put(material, percent);
                 }
             } catch (Exception e) {
                 throw new DAOException(e);
