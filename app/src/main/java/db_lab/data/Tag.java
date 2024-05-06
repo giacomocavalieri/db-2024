@@ -47,7 +47,7 @@ public final class Tag {
                 while (resultSet.next()) {
                     // 3-a. For each row we read the data we need and create a tag
                     // out of it.
-                    var tagName = resultSet.getString("e.nomeTag");
+                    var tagName = resultSet.getString("tag_name");
                     var tag = new Tag(tagName);
                     tags.add(tag);
                 }

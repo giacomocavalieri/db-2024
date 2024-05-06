@@ -49,8 +49,8 @@ public final class ProductPreview {
                 var resultSet = statement.executeQuery();
             ) {
                 while (resultSet.next()) {
-                    var code = resultSet.getInt("p.codProdotto");
-                    var name = resultSet.getString("p.nome");
+                    var code = resultSet.getInt("code");
+                    var name = resultSet.getString("name");
 
                     // Notice how, for each product we have to run another query to
                     // get all of its tags. We've already implemented the query we

@@ -44,9 +44,9 @@ public final class Material {
                 var resultSet = statement.executeQuery();
             ) {
                 while (resultSet.next()) {
-                    var code = resultSet.getInt("m.codMateriale");
-                    var description = resultSet.getString("m.descrizione");
-                    var percent = resultSet.getFloat("c.percentuale");
+                    var code = resultSet.getInt("MATERIAL.code");
+                    var description = resultSet.getString("MATERIAL.description");
+                    var percent = resultSet.getFloat("COMPOSITION.percent");
                     var material = new Material(code, description);
                     materials.put(material, percent);
                 }

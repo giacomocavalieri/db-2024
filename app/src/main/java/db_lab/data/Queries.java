@@ -4,30 +4,30 @@ public final class Queries {
 
     public static final String TAGS_FOR_PRODUCT =
         """
-        select e.nomeTag
-        from   ETICHETTA e
-        where  e.codProdotto = ?
+        select tag_name
+        from   TAGGED
+        where  product_code = ?
         """;
 
     public static final String LIST_PRODUCTS =
         """
-        select p.codProdotto, p.nome
-        from   PRODOTTO p
+        select code, name
+        from   PRODUCT
         """;
 
     public static final String PRODUCT_COMPOSITION =
         """
-        select m.codMateriale, m.descrizione, c.percentuale
-        from   PRODOTTO p, COMPOSIZIONE c, MATERIALE m
-        where  p.codProdotto = c.codProdotto
-        and    c.codMateriale = m.codMaterial
-        and    p.codProdotto = ?
+        select MATERIAL.code, MATERIAL.description, COMPOSITION.percent
+        from   PRODUCT, COMPOSITION, MATERIAL
+        where  PRODUCT.code = COMPOSITION.product_code
+        and    COMPOSITION.material_code = MATERIAL.code
+        and    PRODUCT.code = ?
         """;
 
     public static final String FIND_PRODUCT =
         """
-        select p.*
-        from   PRODOTTO p
-        where  p.codProdotto = ?
+        select code, name, description
+        from   PRODUCT
+        where  code = ?
         """;
 }

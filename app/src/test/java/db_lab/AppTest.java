@@ -13,6 +13,7 @@ import db_lab.data.Tag;
 import db_lab.model.Model;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Savepoint;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -23,15 +24,31 @@ import org.junit.Test;
 public final class AppTest {
 
     private static Connection connection;
+    private static Savepoint savepoint;
 
     @BeforeClass
-    public static void setup() {
+    public static void setup() throws SQLException {
         connection = DAOUtils.localMySQLConnection("tessiland", "root", "");
+
+        // We do everything inside a transaction so that we won't pollute the
+        // database with test data.
+        connection.setAutoCommit(false);
+        savepoint = connection.setSavepoint();
+        try (var statement = connection.createStatement();) {
+            statement.executeUpdate("insert into TAG values ('tag1'), ('tag2');");
+            statement.executeUpdate("insert into MATERIAL values (1, 'linen'), (2, 'cotton');");
+            statement.executeUpdate("insert into PRODUCT values (1, 'a', 'description a'), (2, 'b', 'description b');");
+            statement.executeUpdate("insert into COMPOSITION values (1, 1, 0.5), (1, 2, 0.4);");
+            statement.executeUpdate("insert into TAGGED values (1, 'tag1'), (1, 'tag2');");
+        }
     }
 
     @AfterClass
     public static void cleanup() throws SQLException {
         if (connection != null) {
+            if (savepoint != null) {
+                connection.rollback(savepoint);
+            }
             connection.close();
         }
     }
@@ -58,7 +75,7 @@ public final class AppTest {
         var actual = ProductPreview.DAO.list(connection);
         var expected = List.of(
             new ProductPreview(1, "a", Set.of(new Tag("tag1"), new Tag("tag2"))),
-            new ProductPreview(2, "b", Set.of(new Tag("tag3"), new Tag("tag4")))
+            new ProductPreview(2, "b", Set.of())
         );
         assertThat(actual).hasSameElementsAs(expected);
     }

@@ -53,9 +53,9 @@ public final class Product {
                 var resultSet = statement.executeQuery();
             ) {
                 if (resultSet.next()) {
-                    var code = resultSet.getInt("p.codice");
-                    var name = resultSet.getString("p.nome");
-                    var description = resultSet.getString("p.descrizione");
+                    var code = resultSet.getInt("code");
+                    var name = resultSet.getString("name");
+                    var description = resultSet.getString("description");
                     var composition = Material.DAO.forProduct(connection, productId);
                     var product = new Product(code, name, description, composition);
                     return Optional.of(product);
