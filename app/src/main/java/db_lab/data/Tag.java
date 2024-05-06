@@ -24,10 +24,14 @@ public final class Tag {
     public boolean equals(Object other) {
         if (other == this) {
             return true;
-        } else return switch (other) {
-            case Tag t -> t.name.equals(this.name);
-            default -> false;
-        };
+        } else if (other == null) {
+            return false;
+        } else if (other instanceof Tag) {
+            var t = (Tag) other;
+            return t.name.equals(this.name);
+        } else {
+            return false;
+        }
     }
 
     @Override

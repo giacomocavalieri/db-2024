@@ -28,10 +28,14 @@ public final class Material {
     public boolean equals(Object other) {
         if (other == this) {
             return true;
-        } else return switch (other) {
-            case Material m -> m.code == this.code;
-            default -> false;
-        };
+        } else if (other == null) {
+            return false;
+        } else if (other instanceof Material) {
+            var m = (Material) other;
+            return m.code == this.code;
+        } else {
+            return false;
+        }
     }
 
     @Override

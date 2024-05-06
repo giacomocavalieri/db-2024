@@ -30,10 +30,14 @@ public final class ProductPreview {
     public boolean equals(Object other) {
         if (other == this) {
             return true;
-        } else return switch (other) {
-            case ProductPreview p -> p.code == this.code;
-            default -> false;
-        };
+        } else if (other == null) {
+            return false;
+        } else if (other instanceof ProductPreview) {
+            var p = (ProductPreview) other;
+            return p.code == this.code;
+        } else {
+            return false;
+        }
     }
 
     @Override

@@ -31,7 +31,7 @@ import javax.swing.table.DefaultTableModel;
 public final class View {
 
     private Optional<Controller> controller;
-    private JFrame mainFrame;
+    private final JFrame mainFrame;
 
     public View() {
         this.controller = Optional.empty();

@@ -34,8 +34,8 @@ public final class Controller {
     //    └────── of user's ────┘
     //            actions
     //
-    private Model model;
-    private View view;
+    private final Model model;
+    private final View view;
 
     public Controller(Model model, View view) {
         Objects.requireNonNull(model, "Controller created with null model");
