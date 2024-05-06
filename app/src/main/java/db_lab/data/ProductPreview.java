@@ -1,9 +1,5 @@
 package db_lab.data;
 
-import db_lab.data.DAOException;
-import db_lab.data.DAOUtils;
-import db_lab.data.Queries;
-import db_lab.data.Tag;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Collections;

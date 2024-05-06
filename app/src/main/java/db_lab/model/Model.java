@@ -2,8 +2,6 @@ package db_lab.model;
 
 import db_lab.data.Product;
 import db_lab.data.ProductPreview;
-import db_lab.model.DBModel;
-import db_lab.model.MockedModel;
 import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
