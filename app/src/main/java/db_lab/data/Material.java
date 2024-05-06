@@ -3,16 +3,9 @@ package db_lab.data;
 import db_lab.data.DAOException;
 import db_lab.data.DAOUtils;
 import db_lab.data.Queries;
-import db_lab.data.Tag;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public final class Material {
 

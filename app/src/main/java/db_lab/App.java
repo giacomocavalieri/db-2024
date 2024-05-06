@@ -2,8 +2,6 @@ package db_lab;
 
 import db_lab.data.DAOUtils;
 import db_lab.model.Model;
-import java.sql.Connection;
-import java.util.List;
 
 public final class App {
 

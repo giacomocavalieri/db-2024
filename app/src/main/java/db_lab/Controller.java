@@ -2,13 +2,9 @@ package db_lab;
 
 import db_lab.View;
 import db_lab.data.DAOException;
-import db_lab.data.Product;
 import db_lab.data.ProductPreview;
 import db_lab.model.Model;
-import java.sql.Connection;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 // The controller provides a holistic description of how the outside world can
 // interact with our application: each public method is written as

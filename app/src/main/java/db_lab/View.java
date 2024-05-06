@@ -2,11 +2,8 @@ package db_lab;
 
 import db_lab.data.Product;
 import db_lab.data.ProductPreview;
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
@@ -20,13 +17,8 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JSeparator;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.table.DefaultTableModel;
 
 public final class View {
 
@@ -67,7 +59,7 @@ public final class View {
     }
 
     public void setController(Controller controller) {
-        Objects.requireNonNull(controller);
+        Objects.requireNonNull(controller, "Set null controller in view");
         this.controller = Optional.of(controller);
     }
 

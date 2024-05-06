@@ -4,7 +4,6 @@ import db_lab.data.Material;
 import db_lab.data.Product;
 import db_lab.data.ProductPreview;
 import db_lab.data.Tag;
-import java.sql.Connection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
