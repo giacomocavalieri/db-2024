@@ -3,6 +3,7 @@
 
 # Ignore Gradle build output directory
 build
+bin
 
 # macOS files
 .DS_Store
