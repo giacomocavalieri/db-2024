@@ -38,7 +38,7 @@ public final class AppTest {
             statement.executeUpdate("insert into TAG values ('tag1'), ('tag2');");
             statement.executeUpdate("insert into MATERIAL values (1, 'linen'), (2, 'cotton');");
             statement.executeUpdate("insert into PRODUCT values (1, 'a', 'description a'), (2, 'b', 'description b');");
-            statement.executeUpdate("insert into COMPOSITION values (1, 1, 0.5), (1, 2, 0.4);");
+            statement.executeUpdate("insert into COMPOSITION values (1, 1, 0.6), (1, 2, 0.4);");
             statement.executeUpdate("insert into TAGGED values (1, 'tag1'), (1, 'tag2');");
         }
     }

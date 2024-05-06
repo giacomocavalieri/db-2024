@@ -75,6 +75,7 @@ public final class Controller {
             var previews = this.model.loadPreviews();
             this.view.previewPage(previews);
         } catch (DAOException e) {
+            e.printStackTrace();
             this.view.failedToLoadPreviews();
         }
     }
