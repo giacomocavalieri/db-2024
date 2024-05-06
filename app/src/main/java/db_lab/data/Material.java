@@ -3,6 +3,7 @@ package db_lab.data;
 import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public final class Material {
 
@@ -22,7 +23,7 @@ public final class Material {
             return false;
         } else if (other instanceof Material) {
             var m = (Material) other;
-            return m.code == this.code;
+            return m.code == this.code && m.description.equals(this.description);
         } else {
             return false;
         }
@@ -30,7 +31,7 @@ public final class Material {
 
     @Override
     public int hashCode() {
-        return Integer.hashCode(this.code);
+        return Objects.hash(this.code, this.description);
     }
 
     public final class DAO {

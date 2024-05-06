@@ -114,7 +114,11 @@ public final class View {
 
     private void addPreviews(Container cp, List<ProductPreview> productPreviews) {
         productPreviews.forEach(preview -> {
-            var tags = preview.tags.stream().map(tag -> tag.name).collect(Collectors.joining(","));
+            var tags = preview.tags
+                .stream()
+                .map(tag -> tag.name)
+                .sorted((tag1, tag2) -> tag1.compareTo(tag2))
+                .collect(Collectors.joining(","));
             var label = "• " + preview.name + " [" + tags + "]";
             cp.add(clickableLabel(label, () -> this.getController().userClickedPreview(preview)));
         });

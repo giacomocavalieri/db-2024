@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 public final class Product {
@@ -28,7 +29,12 @@ public final class Product {
             return false;
         } else if (other instanceof Product) {
             var p = (Product) other;
-            return p.code == this.code;
+            return (
+                p.code == this.code &&
+                p.name.equals(this.name) &&
+                p.description.equals(this.description) &&
+                p.composition.equals(this.composition)
+            );
         } else {
             return false;
         }
@@ -36,7 +42,7 @@ public final class Product {
 
     @Override
     public int hashCode() {
-        return Integer.hashCode(this.code);
+        return Objects.hash(this.code, this.name, this.description, this.composition);
     }
 
     public final class DAO {

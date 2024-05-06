@@ -15,6 +15,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -37,8 +38,8 @@ public final class AppTest {
 
     @Test
     public void productTags() {
-        var actual = Tag.DAO.listForProduct(connection, 1);
-        var expected = List.of(new Tag("tag1"), new Tag("tag2"));
+        var actual = Tag.DAO.ofProduct(connection, 1);
+        var expected = Set.of(new Tag("tag1"), new Tag("tag2"));
         assertThat(actual).hasSameElementsAs(expected);
     }
 
@@ -56,8 +57,8 @@ public final class AppTest {
     public void productPreviews() {
         var actual = ProductPreview.DAO.list(connection);
         var expected = List.of(
-            new ProductPreview(1, "a", List.of(new Tag("tag1"), new Tag("tag2"))),
-            new ProductPreview(2, "b", List.of(new Tag("tag3"), new Tag("tag4")))
+            new ProductPreview(1, "a", Set.of(new Tag("tag1"), new Tag("tag2"))),
+            new ProductPreview(2, "b", Set.of(new Tag("tag3"), new Tag("tag4")))
         );
         assertThat(actual).hasSameElementsAs(expected);
     }

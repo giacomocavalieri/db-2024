@@ -1,8 +1,8 @@
 package db_lab.data;
 
 import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public final class Tag {
 
@@ -33,8 +33,8 @@ public final class Tag {
 
     public final class DAO {
 
-        public static List<Tag> listForProduct(Connection connection, int productId) {
-            var tags = new ArrayList<Tag>();
+        public static Set<Tag> ofProduct(Connection connection, int productId) {
+            var tags = new HashSet<Tag>();
 
             try (
                 // 1. Prepare the query you want to run

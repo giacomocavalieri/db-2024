@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 // This is a mocked implementation that uses an in-memory map of products
@@ -22,7 +23,7 @@ public final class MockedModel implements Model {
     public MockedModel() {
         var previews = new HashMap<ProductPreview, Product>();
         previews.put(
-            new ProductPreview(1, "Ferri 7½", List.of(new Tag("ferri"), new Tag("materiale"))),
+            new ProductPreview(1, "Ferri 7½", Set.of(new Tag("ferri"), new Tag("materiale"))),
             new Product(
                 1,
                 "Ferri 7½",
@@ -31,7 +32,7 @@ public final class MockedModel implements Model {
             )
         );
         previews.put(
-            new ProductPreview(2, "Uncinetto 5mm", List.of(new Tag("uncinetti"), new Tag("materiale"))),
+            new ProductPreview(2, "Uncinetto 5mm", Set.of(new Tag("uncinetti"), new Tag("materiale"))),
             new Product(
                 2,
                 "Uncinetto 5mm",
@@ -40,7 +41,7 @@ public final class MockedModel implements Model {
             )
         );
         previews.put(
-            new ProductPreview(3, "Gomitolo lana merino", List.of(new Tag("materiale"), new Tag("lana"))),
+            new ProductPreview(3, "Gomitolo lana merino", Set.of(new Tag("materiale"), new Tag("lana"))),
             new Product(
                 3,
                 "Gomitolo lana merino",
@@ -49,7 +50,7 @@ public final class MockedModel implements Model {
             )
         );
         previews.put(
-            new ProductPreview(3, "Gomitolo lana misto acrilico", List.of(new Tag("materiale"), new Tag("lana"))),
+            new ProductPreview(3, "Gomitolo lana misto acrilico", Set.of(new Tag("materiale"), new Tag("lana"))),
             new Product(
                 3,
                 "Gomitolo lana misto acrilico",
