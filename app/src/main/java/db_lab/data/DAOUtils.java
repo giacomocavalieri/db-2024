@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class DAOUtils {
+public final class DAOUtils {
 
     // Establishes a connection to a MySQL daemon running locally at port 3306.
     //

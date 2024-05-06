@@ -5,7 +5,7 @@ import db_lab.model.Model;
 import java.sql.Connection;
 import java.util.List;
 
-public class App {
+public final class App {
 
     public static void main(String[] args) {
         // If you want to get a feel of the application before having implemented

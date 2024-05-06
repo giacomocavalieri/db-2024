@@ -12,9 +12,34 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
-public record Material(int code, String description) {
-    public class DAO {
+public final class Material {
+
+    public final int code;
+    public final String description;
+
+    public Material(int code, String description) {
+        this.code = code;
+        this.description = description == null ? "" : description;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        } else return switch (other) {
+            case Material m -> m.code == this.code;
+            default -> false;
+        };
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(this.code);
+    }
+
+    public final class DAO {
 
         public static Map<Material, Float> forProduct(Connection connection, int productId) {
             var materials = new HashMap<Material, Float>();

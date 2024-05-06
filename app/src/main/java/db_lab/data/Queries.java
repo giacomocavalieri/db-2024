@@ -1,6 +1,6 @@
 package db_lab.data;
 
-public class Queries {
+public final class Queries {
 
     public static final String TAGS_FOR_PRODUCT =
         """

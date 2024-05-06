@@ -9,13 +9,42 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public record Product(int code, String name, String description, Map<Material, Float> composition) {
-    public class DAO {
+public final class Product {
+
+    public final int code;
+    public final String name;
+    public final String description;
+    public final Map<Material, Float> composition;
+
+    public Product(int code, String name, String description, Map<Material, Float> composition) {
+        this.code = code;
+        this.name = name;
+        this.description = description == null ? "" : description;
+        this.composition = composition == null ? Map.of() : Collections.unmodifiableMap(new HashMap<>(composition));
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        } else return switch (other) {
+            case Product p -> p.code == this.code;
+            default -> false;
+        };
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(this.code);
+    }
+
+    public final class DAO {
 
         public static Optional<Product> find(Connection connection, int productId) {
             try (

@@ -12,8 +12,30 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public record Tag(String name) {
-    public class DAO {
+public final class Tag {
+
+    public final String name;
+
+    public Tag(String name) {
+        this.name = name == null ? "" : name;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        } else return switch (other) {
+            case Tag t -> t.name.equals(this.name);
+            default -> false;
+        };
+    }
+
+    @Override
+    public int hashCode() {
+        return this.name.hashCode();
+    }
+
+    public final class DAO {
 
         public static List<Tag> listForProduct(Connection connection, int productId) {
             var tags = new ArrayList<Tag>();

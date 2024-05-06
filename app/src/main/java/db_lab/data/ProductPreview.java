@@ -9,11 +9,39 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-public record ProductPreview(int code, String name, List<Tag> tags) {
-    public class DAO {
+public final class ProductPreview {
+
+    public final int code;
+    public final String name;
+    public final List<Tag> tags;
+
+    public ProductPreview(int code, String name, List<Tag> tags) {
+        this.code = code;
+        this.name = name == null ? "" : name;
+        this.tags = tags == null ? List.of() : Collections.unmodifiableList(new ArrayList<>(tags));
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        } else return switch (other) {
+            case ProductPreview p -> p.code == this.code;
+            default -> false;
+        };
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(this.code);
+    }
+
+    public final class DAO {
 
         public static final List<ProductPreview> list(Connection connection) {
             var previews = new ArrayList<ProductPreview>();

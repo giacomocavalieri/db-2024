@@ -24,11 +24,12 @@ In order to display a preview page we are going to need a list of products'
 previews. So we can define a class `ProductPreview` that represents just that:
 
 ```java
-public class ProductPreview {
+public final class ProductPreview {
 
-  int code;
-  String name;
-  List<Tag> tags;
+  final int code;
+  final String name;
+  final List<Tag> tags;
+  // ...
 }
 
 ```
@@ -37,9 +38,9 @@ We can immediately see how a `ProductPreview` needs a list of tags, so we define
 a class for that as well:
 
 ```java
-public class Tag {
+public final class Tag {
 
-  String name;
+  final String name;
 }
 
 ```
@@ -60,10 +61,10 @@ application's homepage:
 ```java
 import java.sql.Connection;
 
-public class ProductReview {
+public final class ProductReview {
 
   // ...
-  public class DAO {
+  public final class DAO {
 
     public static List<ProductReview> list(Connection connection) {
       // ...

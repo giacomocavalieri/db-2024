@@ -5,7 +5,7 @@ package db_lab.data;
 //
 // This way we won't have `SQLException`s bubbling up in all other functions.
 //
-public class DAOException extends RuntimeException {
+public final class DAOException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 

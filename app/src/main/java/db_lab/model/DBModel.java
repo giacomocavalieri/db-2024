@@ -15,9 +15,9 @@ import java.util.Optional;
 // A real model might be doing much more, but for the sake of the example we're
 // keeping it simple.
 //
-public class DBModel implements Model {
+public final class DBModel implements Model {
 
-    private Connection connection;
+    private final Connection connection;
     private Optional<List<ProductPreview>> previews;
 
     public DBModel(Connection connection) {

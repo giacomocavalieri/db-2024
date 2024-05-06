@@ -7,6 +7,7 @@ import db_lab.data.ProductPreview;
 import db_lab.model.Model;
 import java.sql.Connection;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 // The controller provides a holistic description of how the outside world can
@@ -18,7 +19,7 @@ import java.util.Optional;
 // that can happen in our app. This makes it simpler to track all the possible
 // actions that can take place as the application grows.
 //
-public class Controller {
+public final class Controller {
 
     // The controller holds a reference to the:
     //   - model: to have it load new data
@@ -37,6 +38,8 @@ public class Controller {
     private View view;
 
     public Controller(Model model, View view) {
+        Objects.requireNonNull(model, "Controller created with null model");
+        Objects.requireNonNull(view, "Controller created with null view");
         this.view = view;
         this.model = model;
     }
@@ -52,7 +55,7 @@ public class Controller {
     public void userClickedPreview(ProductPreview productPreview) {
         try {
             this.view.loadingProduct();
-            var product = this.model.find(productPreview.code());
+            var product = this.model.find(productPreview.code);
             if (product.isPresent()) {
                 this.view.productPage(product.get());
             } else {

@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 // This can be handy to test out our application's look and feel without having
 // to setup a database connection.
 //
-public class MockedModel implements Model {
+public final class MockedModel implements Model {
 
     private Map<ProductPreview, Product> previews;
 
@@ -69,7 +69,7 @@ public class MockedModel implements Model {
         return previews
             .entrySet()
             .stream()
-            .filter(entry -> entry.getKey().code() == productCode)
+            .filter(entry -> entry.getKey().code == productCode)
             .findFirst()
             .map(entry -> entry.getValue());
     }
@@ -78,7 +78,7 @@ public class MockedModel implements Model {
     public List<ProductPreview> previews() {
         return this.previews.keySet()
             .stream()
-            .sorted((preview1, preview2) -> preview1.code() - preview2.code())
+            .sorted((preview1, preview2) -> preview1.code - preview2.code)
             .collect(Collectors.toList());
     }
 
