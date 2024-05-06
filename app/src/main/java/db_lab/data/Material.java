@@ -2,6 +2,7 @@ package db_lab.data;
 
 import java.sql.Connection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -32,6 +33,14 @@ public final class Material {
     @Override
     public int hashCode() {
         return Objects.hash(this.code, this.description);
+    }
+
+    @Override
+    public String toString() {
+        return Printer.stringify(
+            "Material",
+            List.of(Printer.field("code", this.code), Printer.field("description", this.description))
+        );
     }
 
     public final class DAO {

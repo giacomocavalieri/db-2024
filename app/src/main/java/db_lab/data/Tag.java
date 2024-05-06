@@ -2,6 +2,7 @@ package db_lab.data;
 
 import java.sql.Connection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public final class Tag {
@@ -31,6 +32,11 @@ public final class Tag {
         return this.name.hashCode();
     }
 
+    @Override
+    public String toString() {
+        return Printer.stringify("Tag", List.of(Printer.field("name", this.name)));
+    }
+
     public final class DAO {
 
         public static Set<Tag> ofProduct(Connection connection, int productId) {
@@ -43,10 +49,10 @@ public final class Tag {
                 var resultSet = statement.executeQuery();
             ) {
                 // 3. Accumulate all the values of the result set into a list of tags
-                // iterating over it, row by row, until we run out of results.
+                //    iterating over it, row by row, until we run out of results.
                 while (resultSet.next()) {
                     // 3-a. For each row we read the data we need and create a tag
-                    // out of it.
+                    //      out of it.
                     var tagName = resultSet.getString("tag_name");
                     var tag = new Tag(tagName);
                     tags.add(tag);

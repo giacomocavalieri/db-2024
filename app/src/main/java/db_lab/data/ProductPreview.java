@@ -39,6 +39,18 @@ public final class ProductPreview {
         return Objects.hash(this.code, this.name, this.tags);
     }
 
+    @Override
+    public String toString() {
+        return Printer.stringify(
+            "ProductPreview",
+            List.of(
+                Printer.field("code", this.code),
+                Printer.field("name", this.name),
+                Printer.field("tags", this.tags)
+            )
+        );
+    }
+
     public final class DAO {
 
         public static final List<ProductPreview> list(Connection connection) {

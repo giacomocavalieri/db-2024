@@ -3,6 +3,7 @@ package db_lab.data;
 import java.sql.Connection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -43,6 +44,19 @@ public final class Product {
     @Override
     public int hashCode() {
         return Objects.hash(this.code, this.name, this.description, this.composition);
+    }
+
+    @Override
+    public String toString() {
+        return Printer.stringify(
+            "Product",
+            List.of(
+                Printer.field("code", this.code),
+                Printer.field("name", this.name),
+                Printer.field("description", this.description),
+                Printer.field("composition", this.composition)
+            )
+        );
     }
 
     public final class DAO {
