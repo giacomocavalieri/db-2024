@@ -48,6 +48,6 @@ alter table TAGGED add constraint tagged_references_tag
 foreign key (tag_name)
 references TAG (name);
 
-alter table ETICHETTA add constraint tagged_references_product
+alter table TAGGED add constraint tagged_references_product
 foreign key (product_code)
 references PRODUCT (code);

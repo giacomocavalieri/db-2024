@@ -95,7 +95,7 @@ public final class View {
                 .sorted((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue()))
                 .map(entry -> {
                     var percent = Math.round(entry.getValue() * 100) + "%";
-                    return "• " + entry.getKey().description + " " + percent;
+                    return "- " + entry.getKey().description + " " + percent;
                 })
                 .forEach(entry -> cp.add(new JLabel(entry)));
 
@@ -131,7 +131,7 @@ public final class View {
                 .map(tag -> tag.name)
                 .sorted((tag1, tag2) -> tag1.compareTo(tag2))
                 .collect(Collectors.joining(","));
-            var label = "• " + preview.name + " [" + tags + "]";
+            var label = "- " + preview.name + " [" + tags + "]";
             cp.add(clickableLabel(label, () -> this.getController().userClickedPreview(preview)));
         });
     }
