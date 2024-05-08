@@ -54,6 +54,8 @@ public final class ProductPreview {
     public final class DAO {
 
         public static final List<ProductPreview> list(Connection connection) {
+            // Iterating through a resultSet:
+            // https://docs.oracle.com/javase/tutorial/jdbc/basics/retrieving.html
             throw new UnsupportedOperationException("unimplemented");
         }
     }

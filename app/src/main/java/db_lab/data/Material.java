@@ -46,6 +46,8 @@ public final class Material {
     public final class DAO {
 
         public static Map<Material, Float> forProduct(Connection connection, int productId) {
+            // Iterating through a resultSet:
+            // https://docs.oracle.com/javase/tutorial/jdbc/basics/retrieving.html
             throw new UnsupportedOperationException("Unimplemented");
         }
     }

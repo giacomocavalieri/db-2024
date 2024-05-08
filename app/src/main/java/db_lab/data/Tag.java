@@ -40,6 +40,8 @@ public final class Tag {
     public final class DAO {
 
         public static Set<Tag> ofProduct(Connection connection, int productId) {
+            // Iterating through a resultSet:
+            // https://docs.oracle.com/javase/tutorial/jdbc/basics/retrieving.html
             throw new UnsupportedOperationException("unimplemented");
         }
     }
