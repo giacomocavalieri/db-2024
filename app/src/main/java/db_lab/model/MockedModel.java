@@ -50,7 +50,7 @@ public final class MockedModel implements Model {
             )
         );
         previews.put(
-            new ProductPreview(3, "Gomitolo lana misto acrilico", Set.of(new Tag("materiale"), new Tag("lana"))),
+            new ProductPreview(4, "Gomitolo lana misto acrilico", Set.of(new Tag("materiale"), new Tag("lana"))),
             new Product(
                 3,
                 "Gomitolo lana misto acrilico",
