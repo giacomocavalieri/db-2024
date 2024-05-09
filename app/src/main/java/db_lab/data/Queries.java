@@ -18,10 +18,9 @@ public final class Queries {
     public static final String PRODUCT_COMPOSITION =
         """
         select MATERIAL.code, MATERIAL.description, COMPOSITION.percent
-        from   PRODUCT, COMPOSITION, MATERIAL
-        where  PRODUCT.code = COMPOSITION.product_code
-        and    COMPOSITION.material_code = MATERIAL.code
-        and    PRODUCT.code = ?
+        from   COMPOSITION, MATERIAL
+        where  COMPOSITION.material_code = MATERIAL.code
+        and    COMPOSITION.product_code = ?
         """;
 
     public static final String FIND_PRODUCT =
